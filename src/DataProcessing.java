@@ -1,12 +1,21 @@
 import java.util.ArrayList;
 
 public class DataProcessing {
-    private ArrayList<String> input;
-    private ArrayList<String> dataProcessed;
 
     public DataProcessing() {}
 
-    
+    public ArrayList<String> processData(ArrayList<String> inputData)
+    {
+        ArrayList<String> outputData = new ArrayList<>();
+
+        for(String line : inputData) {
+            String[] lineArray = line.split(",");
+
+            outputData.add(lineArray[2] + " : " + ipV6toDec(lineArray[0].substring(0, lineArray[0].indexOf("/"))) + ipV4toHex(lineArray[5].substring(0, lineArray[5].indexOf("\n"))));
+        }
+
+        return outputData;
+    }
 
     private String ipV6toDec(String ipV6)
     {
@@ -29,4 +38,5 @@ public class DataProcessing {
 
         return s.toString().toUpperCase();
     }
+
 }
