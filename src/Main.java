@@ -6,8 +6,6 @@ public class Main {
         FileManager fileManager = new FileManager("./test-files/prueba2.txt");
         ArrayList<String> fileContent = fileManager.readFile();
 
-        for (String line : fileContent) {
-            System.out.println(line);
-        }
+        fileManager.writeFile(new ArrayList<>(fileContent.subList(10, 20)));
     }
 }

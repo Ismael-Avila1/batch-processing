@@ -39,6 +39,23 @@ public class FileManager {
         return fileContent;
     }
 
+    public int writeFile(ArrayList<String> content)
+    {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputPathFile));
+
+            for (String line : content)
+                writer.write(line);
+
+            writer.close();
+            return 1;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     private String getDownloadPath() {
         String os = System.getProperty("os.name").toLowerCase();
 
@@ -52,5 +69,3 @@ public class FileManager {
     }
 
 }
-
-
