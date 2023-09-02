@@ -11,10 +11,10 @@ public class FileManager {
 
     FileManager() {}
 
-    public FileManager(String inputPathFile, String outputPathFile)
+    public FileManager(String inputPathFile)
     {
         this.inputPathFile = inputPathFile;
-        this.outputPathFile = outputPathFile;
+        this.outputPathFile = getDownloadPath() + "output-batch-processing.txt";
     }
 
     public ArrayList<String> readFile()
@@ -37,6 +37,18 @@ public class FileManager {
         }
 
         return fileContent;
+    }
+
+    private String getDownloadPath() {
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if(os.contains("win"))
+            return System.getProperty("user.home") + "\\Downloads\\";
+
+        else if(os.contains("nix") || os.contains("nux") || os.contains("mac"))
+            return System.getProperty("user.home") + "/Downloads/";
+
+        return null;
     }
 
 }
