@@ -4,7 +4,7 @@ public class DataProcessing {
 
     public DataProcessing() {}
 
-    public ArrayList<String> processData(ArrayList<String> inputData)
+    public static ArrayList<String> processData(ArrayList<String> inputData)
     {
         ArrayList<String> outputData = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class DataProcessing {
         return outputData;
     }
 
-    private String ipV6toDec(String ipV6)
+    private static String ipV6toDec(String ipV6)
     {
         StringBuilder s = new StringBuilder();
         String[] ipV6Array = ipV6.split(":");
@@ -28,7 +28,7 @@ public class DataProcessing {
         return s.toString();
     }
 
-    private String ipV4toHex(String ipV4)
+    private static String ipV4toHex(String ipV4)
     {
         StringBuilder s = new StringBuilder();
         String[] ipV4Array = ipV4.split("\\.");

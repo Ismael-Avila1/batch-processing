@@ -3,14 +3,11 @@ public class Main {
 
     public static void main(String[] args)
     {
-        FileManager fileManager = new FileManager("./test-files/prueba2.txt");
-        ArrayList<String> fileContent = fileManager.readFile();
+        ArrayList<String> fileContent = FileManager.readFile("./test-files/prueba2.txt");
 
-        DataProcessing dataProcessing = new DataProcessing();
-        ArrayList<String> processedData = dataProcessing.processData(fileContent);
+        ArrayList<String> processedData = DataProcessing.processData(fileContent);
 
-        fileManager.writeFile(processedData);
-        if(fileManager.writeFile(processedData) == 1)
+        if(FileManager.writeFile(processedData) == 1)
             System.out.println("Data processed successfully");
         else
             System.out.println("Error processing data");

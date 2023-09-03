@@ -6,18 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileManager {
-    private String inputPathFile;
-    private String outputPathFile;
 
     FileManager() {}
 
-    public FileManager(String inputPathFile)
-    {
-        this.inputPathFile = inputPathFile;
-        this.outputPathFile = getDownloadPath() + "output-batch-processing.txt";
-    }
-
-    public ArrayList<String> readFile()
+    public static ArrayList<String> readFile(String inputPathFile)
     {
         ArrayList<String> fileContent = new ArrayList<String>();
 
@@ -39,24 +31,25 @@ public class FileManager {
         return fileContent;
     }
 
-    public int writeFile(ArrayList<String> content)
+    public static int writeFile(ArrayList<String> content)
     {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputPathFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(getDownloadPath() + "output-batch-processing.txt"));
 
             for (String line : content)
-                writer.write(line);
+                writer.write(line + "\n");
 
             writer.close();
-            return 1;
 
         } catch (IOException e) {
             e.printStackTrace();
             return 0;
         }
+
+        return 1;
     }
 
-    private String getDownloadPath() {
+    private static String getDownloadPath() {
         String os = System.getProperty("os.name").toLowerCase();
 
         if(os.contains("win"))
